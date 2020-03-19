@@ -1,0 +1,15 @@
+{
+  "name": "algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "A place to implement and practice algorithms and data structures.",
+  "repository": "https://github.com/amorriscode/algorithms-and-data-structures",
+  "author": "Anthony Morris <anthony@amorrissound.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
