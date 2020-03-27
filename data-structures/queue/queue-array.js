@@ -3,6 +3,7 @@ class Queue {
     this.queue = new Array(size).fill(null);
     this.read = 0;
     this.write = 0;
+    this.size = 0;
   }
 
   incrementIndex(index) {
@@ -16,35 +17,24 @@ class Queue {
 
     this.queue[this.write] = value;
     this.write = this.incrementIndex(this.write);
+    this.size++;
   }
 
   dequeue() {
     const item = this.queue[this.read];
     this.queue[this.read] = null;
     this.read = this.incrementIndex(this.read);
+    this.size--;
 
     return item;
   }
 
   empty() {
-    for (let i = 0; i < this.queue.length; i++) {
-      if (this.queue[i] !== null) {
-        return false;
-      }
-    }
-
-    return true;
+    return this.size === 0;
   }
 
   full() {
-    let nullCounter = 0;
-    for (let i = 0; i < this.queue.length; i++) {
-      if (this.queue[i] === null) {
-        nullCounter++;
-      }
-    }
-
-    return nullCounter <= 1;
+    return this.size === this.queue.length - 1;
   }
 }
 
