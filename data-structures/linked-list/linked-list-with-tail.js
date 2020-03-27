@@ -63,10 +63,17 @@ class LinkedList {
   }
 
   pushBack(value) {
-    let temp = this.tail;
+    const newNode = new ListNode(value);
+
+    if (this.head && this.tail) {
+      this.tail.next = newNode;
+    } else {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+
     this.listSize++;
-    temp.next = new ListNode(value);
-    this.tail = temp.next;
+    this.tail = newNode;
   }
 
   popBack() {
