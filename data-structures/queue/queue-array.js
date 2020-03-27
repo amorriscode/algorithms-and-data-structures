@@ -20,7 +20,7 @@ class Queue {
 
   dequeue() {
     const item = this.queue[this.read];
-    this.queue[this.read] = 0;
+    this.queue[this.read] = null;
     this.read = this.incrementIndex(this.read);
 
     return item;

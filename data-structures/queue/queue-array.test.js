@@ -42,3 +42,31 @@ test('gives an error if the queue is full', () => {
   }).toThrow(new Error('Queue is full'));
   expect(queue.full()).toBe(true);
 });
+
+test('can keep working with a queue after it is full', () => {
+  const queue = new Queue();
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
+  queue.enqueue(4);
+  queue.enqueue(5);
+  queue.enqueue(6);
+  queue.enqueue(7);
+
+  expect(() => {
+    queue.enqueue(8);
+  }).toThrow(new Error('Queue is full'));
+
+  queue.dequeue();
+  queue.dequeue();
+  queue.dequeue();
+  queue.dequeue();
+  queue.dequeue();
+  queue.dequeue();
+  queue.dequeue();
+
+  queue.enqueue(2020);
+
+  expect(queue.dequeue()).toBe(2020);
+  expect(queue.empty()).toBe(true);
+});
