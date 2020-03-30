@@ -40,13 +40,13 @@ class Array {
   }
 
   at(index) {
-    const item = this.data[index];
-
-    if (!item) {
+    // Make sure index is within the bounds
+    // of the current array capacity
+    if (index >= this.arrCapacity) {
       throw Error('Index out of bounds');
     }
 
-    return item;
+    return this.data[index];
   }
 
   push(item) {
