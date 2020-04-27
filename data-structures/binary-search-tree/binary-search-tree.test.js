@@ -187,3 +187,22 @@ test('can delete a node with two children from the binary search tree', () => {
   expect(bst.isInTree(18)).toBe(true);
   expect(bst.root.right.value).toBe(16);
 });
+
+test('can get a successor for a node in the binary search tree', () => {
+  const bst = new BST();
+  bst.insert(15);
+  bst.insert(10);
+  bst.insert(20);
+  bst.insert(8);
+  bst.insert(12);
+  bst.insert(17);
+  bst.insert(25);
+  bst.insert(6);
+  bst.insert(11);
+  bst.insert(16);
+  bst.insert(27);
+
+  expect(bst.getSuccessor(6).value).toBe(8);
+  expect(bst.getSuccessor(10).value).toBe(11);
+  expect(bst.getSuccessor(12).value).toBe(15);
+});

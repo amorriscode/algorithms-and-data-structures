@@ -173,7 +173,37 @@ class BST {
     return node;
   }
 
-  getSuccessor() {}
+  getSuccessor(value, node = this.root) {
+    if (node === null) {
+      return null;
+    }
+
+    if (node.value === value) {
+      if (node.right) {
+        return this.getMinNode(node.right);
+      } else {
+        let successor = null;
+        let ancestor = this.root;
+
+        while (!successor || (ancestor && ancestor.value !== successor.value)) {
+          if (node.value < ancestor.value) {
+            successor = ancestor;
+            ancestor = ancestor.left;
+          } else {
+            ancestor = ancestor.right;
+          }
+        }
+
+        return successor;
+      }
+    }
+
+    if (value < node.value) {
+      return this.getSuccessor(value, node.left);
+    } else if (value > node.value) {
+      return this.getSuccessor(value, node.right);
+    }
+  }
 }
 
 module.exports = {
