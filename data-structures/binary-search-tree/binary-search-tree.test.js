@@ -1,4 +1,4 @@
-const { BST, BSTNode } = require('./binary-search-tree');
+const { BST } = require('./binary-search-tree');
 
 test('initializes a binary search tree', () => {
   const bst = new BST(1);
